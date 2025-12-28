@@ -1,6 +1,6 @@
 const ImageInfo = ({userName, location}) => {
     return (
-        <div>
+        <div className="">
             <div>
                 <h1 className="font-semibold text-[12px] md:text-[15px] ">{ userName }</h1>
             </div>

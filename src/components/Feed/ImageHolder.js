@@ -1,9 +1,14 @@
-const ImageHolder = () => {
-    return (
-        <div>
+const ImageHolder = ({ imageUrl }) => {
+  return (
+    <div className="">
+      <img
+        src={imageUrl}
+        alt="feed"
+        className="w-full rounded-xl md:h-[350px] h-[300px]"
+        loading="lazy"
+      />
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default ImageHolder
+export default ImageHolder;
