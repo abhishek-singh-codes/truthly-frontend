@@ -5,9 +5,9 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="shadow-md p-2 flex items-center justify-between">
+      <div className="flex items-center justify-between p-2 shadow-md">
         {/* Common for mobile and desktop */}
-        <h1 className="text-lg md:text-2xl font-semibold md:font-bold">
+        <h1 className="text-lg font-semibold md:text-2xl md:font-bold">
           Truthly
         </h1>
 
@@ -21,18 +21,18 @@ const Navbar = () => {
         </div>
 
         {/* desktop menu */}
-        <div className="hidden md:flex p-2 text-md md:text-xl hover:bg-black hover:text-white transition-colors duration-500 ease-in-out rounded-md md:rounded-lg shadow-sm md:shadow-md border">
+        {/* <div className="hidden p-2 transition-colors duration-500 ease-in-out border rounded-md shadow-sm md:flex text-md md:text-xl hover:bg-black hover:text-white md:rounded-lg md:shadow-md">
           <button>Feed</button>
-        </div>
+        </div> */}
       </div>
 
-      {open && (
-        <div className="md:hidden pt-2 shadow-md">
-          <div className="p-2 text-md hover:bg-black hover:text-white transition-colors duration-500 ease-in-out rounded-md shadow-sm text-center">
+      {/* {open && (
+        <div className="pt-2 shadow-md md:hidden">
+          <div className="p-2 text-center transition-colors duration-500 ease-in-out rounded-md shadow-sm text-md hover:bg-black hover:text-white">
             <button>Feed</button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };
