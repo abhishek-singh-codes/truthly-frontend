@@ -15,7 +15,7 @@ const FeedNoAuth = () => {
     }, [])
     
     return (
-        <div className="flex flex-col justify-center w-full gap-2 px-2 md:w-1/2">
+        <div className="flex flex-col justify-center w-full h-full gap-4">
             {
                 feedData?.resultObj?.items?.map(item => (
                     <Post 

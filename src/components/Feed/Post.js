@@ -5,7 +5,7 @@ import Caption from "./Caption";
 
 const Post = ({ imageUrl, analytics, userName, caption, location }) => {
   return (
-    <div className="flex flex-col gap-2 p-2 border rounded-sm shadow-sm md:rounded-md md:shadow-md">
+    <div className="flex flex-col w-full h-full p-4 border roundled-sm md:rounded-md">
       <ImageInfo userName={userName} location={location} />
       <ImageHolder imageUrl={imageUrl} />
       <ImageAnalytics analytics={analytics} />
