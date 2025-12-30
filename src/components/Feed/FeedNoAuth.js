@@ -2,17 +2,24 @@ import {useEffect, useState} from "react"
 import Post from "./Post"
 
 const FeedNoAuth = () => {
-
+    const token = process.env.REACT_APP_AUTH_TOKEN
     const [feedData, setFeedData] = useState(null)
-    
     useEffect(() => {
         const fetchFeedData = async () => {
-            const res = await fetch("http://localhost:8181/api/v1/feed");
+            const res = await fetch(
+                "http://localhost:8181/api/v1/feed", 
+                {
+                    method: "GET", 
+                    headers: {
+                        "Authorization" : `Bearer ${token}`,
+                    }
+                }
+            );
             const data = await res.json()
             setFeedData(data)
         }
         fetchFeedData()
-    }, [])
+    }, [token])
     
     return (
         <div className="flex flex-col justify-center w-full h-full gap-4">
