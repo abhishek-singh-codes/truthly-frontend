@@ -3,11 +3,12 @@ import Post from "./Post"
 
 const FeedNoAuth = () => {
     const token = process.env.REACT_APP_AUTH_TOKEN
+    const IP = process.env.REACT_APP_BACKEND_IP
     const [feedData, setFeedData] = useState(null)
     useEffect(() => {
         const fetchFeedData = async () => {
             const res = await fetch(
-                "http://localhost:8181/api/v1/feed", 
+                `${IP}/api/v1/feed`, 
                 {
                     method: "GET", 
                     headers: {
