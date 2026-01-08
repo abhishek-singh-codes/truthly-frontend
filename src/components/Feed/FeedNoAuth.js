@@ -33,6 +33,7 @@ const FeedNoAuth = () => {
                         userName={item.userName}
                         caption={item.caption}
                         location={item.location}
+                        imageId={item.imageId}
                     />
                 ))
             }
