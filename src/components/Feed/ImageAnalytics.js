@@ -19,6 +19,8 @@ const ImageAnalytics = ({ analytics, imageId }) => {
     try{
       if (!prevLiked){
         await api.post(`/interactions/images/${imageId}/like`)
+      }else{
+        await api.delete(`/interactions/images/${imageId}/like`)
       }
     } catch(err){
       setIsLiked(prevLiked);
