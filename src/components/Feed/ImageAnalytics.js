@@ -3,7 +3,6 @@ import api from "../../utils/api"
 import {useState} from "react"
 
 const ImageAnalytics = ({ analytics, imageId }) => {
-  {console.log(analytics)}
   const [isLiked, setIsLiked] = useState(analytics.isLike)
   const [likeCount, setLikeCount] = useState(analytics.like)
   const [loading, setLoading] = useState(false)
