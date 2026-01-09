@@ -1,7 +1,7 @@
 const Caption = ({caption}) => {
     return (
-        <div>
-            <h5 className="text-[12px] md:text-[14px]">{ caption }</h5>
+        <div className="mt-3">
+            <h5 className="text-sm md:text-base text-gray-800 leading-relaxed break-words">{ caption }</h5>
         </div>
     )
 }

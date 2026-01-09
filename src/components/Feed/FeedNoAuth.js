@@ -23,18 +23,19 @@ const FeedNoAuth = () => {
     }, [token])
     
     return (
-        <div className="flex flex-col justify-center w-full h-full gap-4">
+        <div className="flex flex-col items-center w-full h-full gap-6 px-4 py-6">
             {
                 feedData?.resultObj?.items?.map(item => (
-                    <Post 
-                        key={item.imageId}
-                        imageUrl={item.imageUrl}
-                        analytics={item.analytics}
-                        userName={item.userName}
-                        caption={item.caption}
-                        location={item.location}
-                        imageId={item.imageId}
-                    />
+                    <div key={item.imageId} className="w-full max-w-3xl">
+                        <Post 
+                            imageUrl={item.imageUrl}
+                            analytics={item.analytics}
+                            userName={item.userName}
+                            caption={item.caption}
+                            location={item.location}
+                            imageId={item.imageId}
+                        />
+                    </div>
                 ))
             }
         </div>
