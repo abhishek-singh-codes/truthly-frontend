@@ -66,9 +66,9 @@ const FeedNoAuth = () => {
   }, [cursor, hasMore, loading, fetchFeedData])
 
   return (
-    <div className="flex flex-col items-center w-full gap-6 px-4 py-6">
+    <div className="flex flex-col items-center w-full gap-6 px-4 py-6 bg-blue-50 rounded-md">
       {items.map(item => (
-        <div key={item.imageId} className="w-full max-w-3xl">
+        <div key={item.imageId} className="w-full max-w-3xl bg-white rounded-md">
           <Post
             imageUrl={item.imageUrl}
             analytics={item.analytics}
