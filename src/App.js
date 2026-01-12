@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <div className='flex items-start w-full gap-4 p-4 justify-evenly' >
         {/* for user details */}
-        <div className='hidden w-1/4 border rounded-md sm:flex md:p-4 flex-col'>
+        <div className='hidden w-1/4 border rounded-md sm:flex md:p-4 flex-col shadow-md'>
           <UserDetails />
           <UploadImage />
         </div>
