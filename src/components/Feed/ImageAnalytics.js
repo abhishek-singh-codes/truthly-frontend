@@ -34,7 +34,7 @@ const ImageAnalytics = ({ analytics, imageId }) => {
     <div className="flex items-center justify-between gap-4 text-lg md:text-xl mt-3">
       <div className="flex items-center gap-4">
         <button
-          className={`flex items-center gap-2 px-3 py-1 rounded-full transition-transform duration-150 ${isLiked ? "bg-red-50 scale-105 shadow-sm" : "bg-white hover:bg-gray-50"}`}
+          className={`flex items-center gap-2 px-3 py-1 rounded-full transition-transform duration-150 ${isLiked ? "bg-red-50 shadow-sm" : "bg-white hover:bg-gray-50"}`}
           onClick={toggleLike}
           disabled={loading}
           aria-pressed={isLiked}
