@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <div className='flex items-start w-full gap-4 p-4 justify-evenly' >
         {/* for user details */}
-        <div className='hidden w-1/4 border rounded-md sm:flex md:p-4 flex-col shadow-md border-blue-200'>
+        <div className='hidden w-1/4 border rounded-md sm:flex md:p-4 flex-col shadow-md border-blue-200 sticky top-20'>
           <UserDetails />
           <UploadImage />
         </div>
@@ -20,7 +20,7 @@ function App() {
           <FeedNoAuth />
         </div>
         {/* for to show top issue */}
-        <div className='hidden w-1/4 border border-blue-200 rounded-md sm:flex md:p-4 justify-center'>
+        <div className='hidden w-1/4 border border-blue-200 rounded-md sm:flex md:p-4 justify-center sticky top-20'>
           <Distance />
         </div>
       </div>
