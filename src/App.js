@@ -20,7 +20,7 @@ function App() {
           <FeedNoAuth />
         </div>
         {/* for to show top issue */}
-        <div className='hidden w-1/4 border border-blue-200 rounded-md sm:flex md:p-4 justify-center sticky top-20'>
+        <div className='hidden w-1/4 border border-blue-200 rounded-md sm:flex md:p-4 justify-center sticky top-20 shadow-md'>
           <Distance />
         </div>
       </div>
