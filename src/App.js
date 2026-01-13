@@ -7,20 +7,21 @@ import Distance from './components/DistanceRange/Distance'
 
 function App() {
   return (
-    <div className="App">
+    <div className="ApApp h-screen overflow-hiddep">
       <Navbar />
-      <div className='flex items-start w-full gap-4 p-4 justify-evenly' >
+      <div className='flex items-start w-full h-full gap-4 p-4 justify-evenly' >
         {/* for user details */}
         <div className='hidden w-1/4 border rounded-md sm:flex md:p-4 flex-col shadow-md border-blue-200 sticky top-20'>
           <UserDetails />
           <UploadImage />
         </div>
         {/* for feed */}
-        <div className='w-full max-w-sm p-4 border rounded-md border-blue-200'>
+        <div className='w-full max-w-sm p-4 border rounded-md border-blue-200 
+                overflow-y-auto h-full'>
           <FeedNoAuth />
         </div>
         {/* for to show top issue */}
-        <div className='hidden w-1/4 border border-blue-200 rounded-md sm:flex md:p-4 justify-center sticky top-20 shadow-md'>
+        <div className='hidden w-1/4 border border-blue-200 rounded-md sm:flex md:p-4 justify-center shadow-md'>
           <Distance />
         </div>
       </div>
