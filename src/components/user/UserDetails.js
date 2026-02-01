@@ -20,7 +20,7 @@ const UserDetails = () => {
     };
 
     fetchUserData();
-  }, [token]);
+  }, [token, IP]);
 
   if (!userData) {
     return (
@@ -31,11 +31,11 @@ const UserDetails = () => {
   }
 
   return (
-    <div className="w-full max-w-sm mx-auto bg-white rounded-2xl  p-6">
+    <div className="w-full max-w-sm p-6 mx-auto bg-white rounded-2xl">
       
       {/* Avatar + Name */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="flex items-center justify-center w-14 h-14 rounded-full bg-indigo-600 text-white text-xl font-semibold">
+        <div className="flex items-center justify-center text-xl font-semibold text-white bg-indigo-600 rounded-full w-14 h-14">
           {userData.firstName?.[0]}
           {userData.lastName?.[0]}
         </div>
