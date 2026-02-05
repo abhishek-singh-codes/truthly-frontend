@@ -74,7 +74,7 @@ const Feed = () => {
   ]);
 
   return (
-    <div className="flex flex-col items-center w-full gap-6 px-4 py-6 bg-blue-50">
+    <div className="flex flex-col items-center w-full gap-6 bg-blue-50">
       {items.map((item) => (
         <div key={item.imageId} className="w-full max-w-3xl bg-white rounded-md">
           <Post {...item} />
