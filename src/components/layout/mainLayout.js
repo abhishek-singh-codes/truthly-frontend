@@ -14,8 +14,8 @@ const MainLayout = () => {
       <div className="flex w-full gap-4 px-4 pt-4">
 
         {/* LEFT SIDEBAR */}
-        <div className="hidden sm:block w-64">
-          <div className="sticky border border-blue-200 rounded-md shadow-md p-4">
+        <div className="hidden sm:block w-auto">
+          <div className="sticky border border-blue-200 rounded-md shadow-md p-4 w-full">
             <Sidebar />
           </div>
         </div>
