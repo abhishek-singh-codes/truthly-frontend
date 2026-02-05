@@ -1,135 +1,103 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// API-1 will get all the feed items 
-
+/* ---------- NORMAL FEED ---------- */
 export const fetchFeed = createAsyncThunk(
-    "feed/fetchFeed",
-    // get payload data 
-    async ({ IP, token, cursor }) => {
-        
-        // create the url
-        const url = cursor
-            ? `${IP}/api/v1/feed?cursor=${cursor}`
-            : `${IP}/api/v1/feed`;
-        
-        const res = await fetch(url, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }); 
+  "feed/fetchFeed",
+  async ({ IP, token, cursor }) => {
+    const url = cursor
+      ? `${IP}/api/v1/feed?cursor=${cursor}`
+      : `${IP}/api/v1/feed`;
 
-        if (!res.ok) {
-            throw new Error("Feed API failed")
-        }
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
-        return res.json()
-    }
-)
+    if (!res.ok) throw new Error("Feed API failed");
+    return res.json();
+  }
+);
 
+/* ---------- RANGE FEED ---------- */
 export const fetchFeedByRange = createAsyncThunk(
-    "feed/fetchFeedByRange", 
+  "feed/fetchFeedByRange",
+  async ({ IP, token, radius, cursor, lat, long }) => {
+    let url = `${IP}/api/v1/feed/nearby?radius=${radius}&lat=${lat}&long=${long}`;
+    if (cursor) url += `&cursor=${cursor}`;
 
-    async ({ IP, token, radius, cursor, lat, long }) => {
-        // let url -> to update it further
-        console.log("IP", IP)
-        let url = `${IP}/api/v1/feed/nearby?radius=${radius}&lat=${lat}&long=${long}`
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
-        if (cursor) url += `&cursor=${cursor}`
-
-        const res = await fetch(url, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }); 
-
-        if (!res.ok) {
-            throw new Error("Range API failed")
-        }
-
-        return res.json()
-    }
-)
+    if (!res.ok) throw new Error("Range API failed");
+    return res.json();
+  }
+);
 
 const feedSlice = createSlice({
-    name: "feed",
+  name: "feed",
+  initialState: {
+    items: [],
+    normalCursor: null,
+    rangeCursor: null,
+    hasMore: true,
+    loading: false,
+    mode: "NORMAL",
+    radius: null,
+  },
 
-    initialState: {
-        items: [], 
-        cursor: null, 
-        hasMore: true, 
-        loading: false, 
-        mode: "NORMAL", // NORMAL , RANGE
-        radius: null
-    }, 
+  reducers: {
+    resetFeed(state) {
+      state.items = [];
+      state.normalCursor = null;
+      state.rangeCursor = null;
+      state.hasMore = true;
+    },
 
-    reducers: {
+    enableRangeMode(state, action) {
+      state.mode = "RANGE";
+      state.radius = action.payload;
+    },
 
-        resetFeed(state) {
-            state.items = []
-            state.cursor = null
-            state.hasMore = true  
-        }, 
+    enableNormalMode(state) {
+      state.mode = "NORMAL";
+      state.radius = null;
+    },
+  },
 
-        enableRangeMode(state, action) {
-            state.mode = "RANGE"
-            state.radius=action.payload
-        }, 
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchFeed.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchFeed.fulfilled, (state, action) => {
+        const { items, pagination } = action.payload.resultObj;
+        state.items.push(...items);
+        state.normalCursor = pagination.nextCursor;
+        state.hasMore = pagination.hasMore;
+        state.loading = false;
+      })
 
-        enableNormalMode(state) {
-            state.mode="NORMAL"
-        }, 
-    }, 
+      .addCase(fetchFeedByRange.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchFeedByRange.fulfilled, (state, action) => {
+        const { items, pagination } = action.payload.resultObj;
+        state.items.push(...items);
+        state.rangeCursor = pagination.nextCursor;
+        state.hasMore = pagination.hasMore;
+        state.loading = false;
+      })
 
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchFeed.pending, (state) => {
-                state.loading = true
-            })
-        
-            .addCase(fetchFeed.fulfilled, (state, action) => {
-                const { items, pagination } = action.payload.resultObj
-                
-                state.items.push(...items)
+      .addCase(fetchFeed.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(fetchFeedByRange.rejected, (state) => {
+        state.loading = false;
+      });
+  },
+});
 
-                state.cursor = pagination.nextcursor
+export const { resetFeed, enableRangeMode, enableNormalMode } =
+  feedSlice.actions;
 
-                state.hasMore = pagination.hasMore
-
-                state.loading = false
-            })
-        
-            .addCase(fetchFeedByRange.pending, (state) => {
-                state.loading = true
-            })
-        
-            .addCase(fetchFeedByRange.fulfilled, (state, action) => {
-                const { items, pagination } = action.payload.resultObj
-                
-                state.items.push(...items)
-
-                state.cursor = pagination.nextcursor
-
-                state.hasMore = pagination.hasMore
-
-                state.loading = false
-            })
-        
-            .addCase(fetchFeed.rejected, (state) => {
-                state.loading = false
-            })
-
-            .addCase(fetchFeedByRange.rejected, (state) => {
-                state.loading = false
-            })
-
-    }
-})
-
-export const {
-    resetFeed, 
-    enableRangeMode, 
-    enableNormalMode
-} = feedSlice.actions
-
-// store need this reducer 
-export default feedSlice.reducer
+export default feedSlice.reducer;
