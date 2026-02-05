@@ -75,6 +75,10 @@ const feedSlice = createSlice({
         state.normalCursor = pagination.nextCursor;
         state.hasMore = pagination.hasMore;
         state.loading = false;
+
+        console.log("Fetched feed items:", items);
+        console.log("Next cursor:", pagination.nextCursor);
+        console.log("Has more?", pagination.hasMore);
       })
 
       .addCase(fetchFeedByRange.pending, (state) => {
