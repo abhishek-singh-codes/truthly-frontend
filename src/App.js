@@ -10,7 +10,7 @@ import Feed from './components/Feed/Feed';
 // import AddFreind from './components/sidebar/addFreind/addFreind';
 // import Post from './components/sidebar/uploadPost/uploadPost';
 // import More from './components/sidebar/more/more';
-import Temp from './components/temp';
+//import Temp from './components/temp';
 
 function App() {
   return (

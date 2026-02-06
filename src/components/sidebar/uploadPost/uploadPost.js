@@ -1,11 +1,11 @@
 import { MdPostAdd } from "react-icons/md";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import UploadModal from "../../uploadImage/UploadModal";
 
 const UploadPost = () => {
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
+    
     return (
         <>
             <div 
@@ -20,7 +20,7 @@ const UploadPost = () => {
                     <h2 className="font-semibold">Upload Post</h2>
                 </div>
             </div>
-            {open && <UploadModal onClose={() => { setOpen(false); navigate('/'); }} />}
+            {open && <UploadModal onClose={() => { setOpen(false) }} />}
         </>
     )
 }

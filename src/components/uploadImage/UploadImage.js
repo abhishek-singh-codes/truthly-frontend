@@ -1,8 +1,10 @@
 import { FaCamera } from "react-icons/fa";
 import {useState} from "react"; 
 import UploadModal from "./UploadModal";
+import { useNavigate } from "react-router-dom";
 
 const UploadImage = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -14,7 +16,7 @@ const UploadImage = () => {
           <FaCamera size={20} color="#fff" />
         </div>
       </button>
-      {open && <UploadModal onClose={() => setOpen(false)} />}
+      {open && <UploadModal onClose={() => {setOpen(false) ; navigate('/')}} />}
     </>
   );
 };
