@@ -6,10 +6,10 @@ const ImageInfo = ({userName, location}) => {
             </div>
             <div className="min-w-0">
                 <div>
-                    <h1 className="font-semibold text-sm md:text-base text-gray-900 truncate">{ userName }</h1>
+                    <h1 className="font-semibold text-sm md:text-base text-white truncate">{ userName }</h1>
                 </div>
                 <div>
-                    <h6 className="text-xs md:text-sm text-gray-500 truncate">
+                    <h6 className="text-xs md:text-sm text-white truncate">
                         <span className="mr-1">📍</span>
                         {location?.city || "Unknown"}, { location?.state || "-" }
                     </h6>

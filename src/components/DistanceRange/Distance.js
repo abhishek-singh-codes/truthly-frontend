@@ -34,8 +34,8 @@ const Distance = () => {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-sm gap-4 p-6 mx-auto bg-white rounded-2xl">
-      <h3 className="p-4 font-semibold bg-blue-100 rounded-md">
+    <div className="flex flex-col w-full max-w-sm gap-4 p-6 mx-auto  rounded-2xl">
+      <h3 className="p-4 font-semibold bg-white rounded-md border">
         Select the distance range
       </h3>
 
@@ -48,11 +48,11 @@ const Distance = () => {
       />
 
       <div className="flex justify-between">
-        <h2>{sliderValue * 10} KM</h2>
+        <h2 className="text-white">{sliderValue * 10} KM</h2>
         <button
           onClick={onApply}
           disabled={locationLoading}
-          className="px-4 py-2 bg-blue-600 rounded-md text-white"
+          className="px-4 py-2 bg-white rounded-md text-black hover:bg-black hover:border hover:text-white"
         >
           Apply
         </button>
