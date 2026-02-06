@@ -10,7 +10,7 @@ const Home = () => {
                 </div>
                 <div>
                     {/* Home text */}
-                    <h2>Home</h2>
+                    <h2 className="font-semibold">Home</h2>
                 </div>
             </div>
         </>

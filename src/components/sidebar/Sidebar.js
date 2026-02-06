@@ -10,11 +10,11 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col gap-4 w-full">
       <NavLink to="/"><Home /></NavLink>
-      <NavLink to="/profile"><Profile /></NavLink>
-      <NavLink to="/chat"><Chat /></NavLink>
-      <NavLink to="/addFreind"><AddFreind /></NavLink>
+      {/* <NavLink to="/profile"><Profile /></NavLink> */}
+      {/* <NavLink to="/chat"><Chat /></NavLink> */}
+      {/* <NavLink to="/addFreind"><AddFreind /></NavLink> */}
       <NavLink to="/post"><Post /></NavLink>
-      <NavLink to="/more"><More /></NavLink>
+      {/* <NavLink to="/more"><More /></NavLink> */}
     </div>
   );
 };

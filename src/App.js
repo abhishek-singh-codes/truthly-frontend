@@ -19,12 +19,12 @@ function App() {
         {/* ALL SIDEBAR PAGES */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Feed />} />
-          <Route path="/home" element={<Temp />} />
-          <Route path="/profile" element={<Temp />} />
-          <Route path="/chat" element={<Temp />} />
-          <Route path="/addFreind" element={<Temp />} />
-          <Route path="/post" element={<Temp />} />
-          <Route path="/more" element={<Temp />} />
+          {/* <Route path="/home" element={<Feed />} /> */}
+          {/* <Route path="/profile" element={<Temp />} />
+          <Route path="/chat" element={<Temp />} /> */}
+          {/* <Route path="/addFreind" element={<Temp />} /> */}
+          <Route path="/post" element={<Feed />} />
+          {/* <Route path="/more" element={<Temp />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
