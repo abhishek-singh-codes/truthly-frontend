@@ -11,7 +11,6 @@ const UploadModal = ({ onClose }) => {
   const [locationFetched, setLocationFetched] = useState(false);
 
   const useCurrentLocation = () => {
-    
     if (!navigator.geolocation) {
       alert("Geolocation not supported by your browser");
       return;
@@ -29,10 +28,9 @@ const UploadModal = ({ onClose }) => {
       {
         enableHighAccuracy: true,
         timeout: 10000,
-      }
+      },
     );
   };
-
 
   const handleSubmit = async () => {
     if (!file) {
@@ -63,17 +61,18 @@ const UploadModal = ({ onClose }) => {
     }
   };
 
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-sm">
       <div className="bg-white w-[90%] max-w-md rounded-xl p-6 shadow-2xl">
-        
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="font-bold text-xl text-gray-800">Upload Image</h2>
-          <button 
-            onClick={onClose} 
-            className="text-2xl text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition"
+          <button
+            onClick={() => {
+              console.log("Cancel clicked");
+              onClose();
+            }}
+            className="text-2xl text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition cursor-pointer"
           >
             ✕
           </button>
@@ -124,15 +123,16 @@ const UploadModal = ({ onClose }) => {
           </button>
           {locationFetched && (
             <p className="text-xs text-green-600 mt-2 text-center">
-              📌 Latitude: {latitude?.toFixed(4)}, Longitude: {longitude?.toFixed(4)}
+              📌 Latitude: {latitude?.toFixed(4)}, Longitude:{" "}
+              {longitude?.toFixed(4)}
             </p>
           )}
         </div>
 
         {/* Actions */}
         <div className="flex justify-end gap-3">
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="px-6 py-2 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition"
           >
             Cancel
