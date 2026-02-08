@@ -34,7 +34,7 @@ const ImageAnalytics = ({ analytics, imageId }) => {
     <div className="flex items-center justify-between gap-4 text-lg md:text-xl mt-3">
       <div className="flex items-center gap-4">
         <button
-          className={`flex items-center gap-2 px-3 py-1 rounded-full transition-transform duration-150 ${isLiked ? "bg-red-50 shadow-sm" : "bg-white hover:bg-gray-50"}`}
+          className={`flex items-center gap-2 px-3 py-1 rounded-full transition-transform duration-150 ${isLiked ? "bg-red-50 shadow-sm" : "bg-gray-300 hover:bg-gray-50"}`}
           onClick={toggleLike}
           disabled={loading}
           aria-pressed={isLiked}
@@ -47,10 +47,10 @@ const ImageAnalytics = ({ analytics, imageId }) => {
           <span className="text-sm md:text-base text-gray-700">{likeCount}</span>
         </button>
 
-        <button className="flex items-center gap-2 px-3 py-1 rounded-full bg-white hover:bg-gray-50 transition-shadow shadow-sm">
+        {/* <button className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-300 hover:bg-gray-50 transition-shadow shadow-sm">
           <FaRegComment className="text-gray-600"/>
           <span className="text-sm md:text-base text-gray-700">{analytics.comment}</span>
-        </button>
+        </button> */}
       </div>
 
       <div className="text-xs text-gray-400 hidden md:block">

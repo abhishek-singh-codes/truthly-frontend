@@ -35,7 +35,7 @@ const Distance = () => {
 
   return (
     <div className="flex flex-col gap-4 w-full z-30">
-      <h3 className="p-4 font-semibold bg-white rounded-md border">
+      <h3 className="p-4 font-semibold bg-gray-300 rounded-md border">
         Select the distance range
       </h3>
 
@@ -52,7 +52,7 @@ const Distance = () => {
         <button
           onClick={onApply}
           disabled={locationLoading}
-          className="px-4 py-2 bg-white rounded-md text-black hover:bg-black hover:border hover:text-white"
+          className="px-4 py-2 bg-gray-300 rounded-md text-black hover:bg-black hover:border hover:text-white"
         >
           Apply
         </button>

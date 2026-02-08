@@ -3,7 +3,7 @@ import { IoHome } from "react-icons/io5";
 const Home = () => {
     return (
         <>
-            <div className="flex w-full items-center gap-4 border  bg-white rounded-md p-2 hover:bg-black text-black hover:text-white cursor-pointer duration-300">
+            <div className="flex w-full items-center gap-4 border  bg-gray-300 rounded-md p-2 hover:bg-black text-black hover:text-white cursor-pointer duration-300">
                 <div>
                     {/* home logo */}
                     <IoHome size={30} />

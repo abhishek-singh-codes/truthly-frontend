@@ -19,7 +19,7 @@ const MainLayout = () => {
       <div className="pt-16 flex">
         {/* SIDEBAR */}
         <div className="hidden sm:block">
-          <div className="fixed top-16 left-4 w-auto z-30 border p-4 rounded-md">
+          <div className="fixed top-16 left-4 w-auto z-30 border border-gray-800 p-4 rounded-md">
             <Sidebar onOpenModal={() => setOpen(true)} />
           </div>
         </div>
@@ -31,7 +31,7 @@ const MainLayout = () => {
 
         {/* RIGHT PANEL */}
         <div className="hidden sm:block">
-          <div className="fixed top-16 right-4 w-64 z-30 border p-4 rounded-md">
+          <div className="fixed top-16 right-4 w-64 z-30 border p-4 rounded-md border-gray-800">
             <Distance />
           </div>
         </div>

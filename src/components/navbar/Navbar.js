@@ -5,7 +5,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="flex items-center justify-between p-2 shadow-md bg-white">
+      <div className="flex items-center justify-between p-2 shadow-md bg-gray-300">
         {/* Common for mobile and desktop */}
         <h1 className="text-lg font-semibold md:text-2xl md:font-bold">
           Truthly
