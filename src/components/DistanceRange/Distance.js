@@ -34,7 +34,7 @@ const Distance = () => {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-sm gap-4 p-6 mx-auto  rounded-2xl">
+    <div className="flex flex-col gap-4 w-full z-30">
       <h3 className="p-4 font-semibold bg-white rounded-md border">
         Select the distance range
       </h3>

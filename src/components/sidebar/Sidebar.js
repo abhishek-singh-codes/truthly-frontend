@@ -6,17 +6,17 @@ import AddFreind from "./addFreind/addFreind";
 import Post from "./uploadPost/uploadPost";
 import More from "./more/more"; 
 
-const Sidebar = () => {
+const Sidebar = ({ onOpenModal }) => {
   return (
     <div className="flex flex-col gap-4 w-full">
       <NavLink to="/"><Home /></NavLink>
-      {/* <NavLink to="/profile"><Profile /></NavLink> */}
-      {/* <NavLink to="/chat"><Chat /></NavLink> */}
-      {/* <NavLink to="/addFreind"><AddFreind /></NavLink> */}
-      <NavLink to="/post"><Post /></NavLink>
-      {/* <NavLink to="/more"><More /></NavLink> */}
+
+      <div onClick={onOpenModal}>
+        <Post />
+      </div>
     </div>
   );
 };
+
 
 export default Sidebar;

@@ -5,34 +5,13 @@ import { useNavigate } from "react-router-dom";
 import UploadModal from "../../uploadImage/UploadModal";
 
 const UploadPost = () => {
-  const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-
   return (
-    <>
-      <div
-        onClick={() => setOpen(true)}
-        className="flex w-full items-center gap-4 border  bg-white rounded-md p-2 hover:bg-black text-black hover:text-white cursor-pointer duration-300"
-      >
-        <div>
-          {/* UploadPost logo */}
-          <MdPostAdd size={30} />
-        </div>
-        <div>
-          {/* UploadPost text */}
-          <h2 className="font-semibold">Upload Post</h2>
-        </div>
-      </div>
-      {open && (
-        <UploadModal
-          onClose={() => {
-            navigate("/");
-            setOpen(false);
-        }}
-        />
-      )}
-    </>
+    <div className="flex w-full items-center gap-4 border bg-white rounded-md p-2 hover:bg-black text-black hover:text-white cursor-pointer duration-300">
+      <MdPostAdd size={30} />
+      <h2 className="font-semibold">Upload Post</h2>
+    </div>
   );
 };
+
 
 export default UploadPost;
