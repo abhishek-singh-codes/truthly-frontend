@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const IP = process.env.REACT_APP_BACKEND_IP;
 
@@ -20,7 +20,7 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // IMPORTANT for cookies
+      credentials: "include",
       body: JSON.stringify({
         userName,
         password,
@@ -30,45 +30,72 @@ const Login = () => {
     const data = await res.json();
 
     if (res.ok) {
-      navigate("/"); // go to feed
+      navigate("/");
     } else {
       setError(data?.error || "Login failed");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
-      <div className="flex flex-col w-1/3 gap-4 p-6 bg-white border rounded-md shadow-md">
-        <h2 className="text-xl font-semibold text-center">Login</h2>
+    <div className="flex items-center justify-center min-h-screen px-4 bg-black">
+      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-2xl">
+        
+        {/* Title */}
+        <h2 className="mb-6 text-2xl font-semibold text-center">
+          Login
+        </h2>
 
+        {/* Form */}
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <input
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            placeholder="username"
+            placeholder="Username"
             required
-            className="p-2 border rounded-md outline-black"
+            className="p-3 border rounded-lg outline-none focus:ring-2 focus:ring-black"
           />
 
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="password"
+            placeholder="Password"
             required
-            className="p-2 border rounded-md outline-black"
+            className="p-3 border rounded-lg outline-none focus:ring-2 focus:ring-black"
           />
 
           <button
             type="submit"
-            className="p-2 text-white transition duration-300 bg-black rounded-md hover:bg-gray-800"
+            className="p-3 mt-2 text-white transition bg-black rounded-lg hover:bg-gray-800"
           >
             Login
           </button>
 
-          {error && <h3 className="text-sm text-red-500">*{error}</h3>}
+          {error && (
+            <p className="text-sm text-center text-red-500">
+              *{error}
+            </p>
+          )}
         </form>
+
+        {/* Divider */}
+        <div className="flex items-center my-6">
+          <div className="flex-1 h-px bg-gray-300"></div>
+          <span className="px-3 text-sm text-gray-500">OR</span>
+          <div className="flex-1 h-px bg-gray-300"></div>
+        </div>
+
+        {/* Signup link */}
+        <p className="text-sm text-center text-gray-600">
+          Don’t have an account?{" "}
+          <Link
+            to="/signup"
+            className="font-medium text-black underline hover:text-gray-700"
+          >
+            Create one
+          </Link>
+        </p>
       </div>
     </div>
   );
