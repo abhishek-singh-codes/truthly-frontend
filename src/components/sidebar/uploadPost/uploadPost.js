@@ -1,12 +1,8 @@
 import { MdPostAdd } from "react-icons/md";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import UploadModal from "../../uploadImage/UploadModal";
 
 const UploadPost = () => {
   return (
-    <div className="flex w-full items-center gap-4 border bg-gray-300 rounded-md p-2 hover:bg-black text-black hover:text-white cursor-pointer duration-300">
+    <div className="flex items-center w-full gap-4 p-2 text-black duration-300 bg-gray-300 border rounded-md cursor-pointer hover:bg-black hover:text-white">
       <MdPostAdd size={30} />
       <h2 className="font-semibold">Upload Post</h2>
     </div>

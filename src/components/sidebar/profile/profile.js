@@ -3,7 +3,7 @@ import { CgProfile } from "react-icons/cg";
 const Profile = () => {
     return (
         <>
-            <div className="flex w-full items-center gap-4 border border-blue-500 bg-blue-400 rounded-md p-2 hover:bg-blue-600 text-white cursor-pointer duration-300">
+            <div className="flex items-center w-full gap-4 p-2 text-white duration-300 bg-blue-400 border border-blue-500 rounded-md cursor-pointer hover:bg-blue-600">
                 <div>
                     {/* profile logo */}
                     <CgProfile size={30} />
