@@ -1,65 +1,73 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const IP = process.env.REACT_APP_BACKEND_IP;
 
 const Signup = () => {
-    // state to handle the signup form
-    const [userName, setUserName] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [message, setMessage] = useState("")
+  // state to handle the signup form
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-    const handleSingup = async () => {
+  const handleSignup = async (e) => {
+    e.preventDefault();
 
-        if (password !== confirmPassword) {
-            return alert("Password mismatched")
-        }
-        // API to create the user 
-        const url = `${IP}/api/v1/auth/signup`
-        const res = await fetch(
-            url,
-        )
-        const data = await res.json();
-        setMessage(data.message)
+    if (password !== confirmPassword) {
+      return alert("Password mismatched");
     }
 
-    return (
-        <div>
-            <h2>Signup</h2>
+    const url = `${IP}/api/v1/auth/signup`;
 
-            <form onSubmit={handleSingup}>
-                <input
-                    type="text"
-                    placeholder="username"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
-                />
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName,
+        password,
+      }),
+    });
 
-                <input
-                    type="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
+    const data = await res.json();
+    setMessage(data.message);
+  };
 
-                <input
-                    type="password"
-                    placeholder="enter password again"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                />
+  return (
+    <div className="bg-gray-300">
+      <h2>Signup</h2>
 
-                <button type="submit">Signup</button>
+      <form onSubmit={handleSignup}>
+        <input
+          type="text"
+          placeholder="username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          required
+        />
 
-                {message !== "" && 
-                    <h2>{ message }</h2>
-                }
-            </form>
-        </div>
-    )
-}
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="enter password again"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+
+        <button type="submit">Signup</button>
+
+        {message !== "" && <h2>{message}</h2>}
+      </form>
+    </div>
+  );
+};
 
 export default Signup;
