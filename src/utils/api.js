@@ -1,4 +1,5 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 
 const IP = process.env.REACT_APP_BACKEND_IP;
 
@@ -10,7 +11,7 @@ const api = axios.create(
 
 // attach token automatically 
 api.interceptors.request.use((config)=>{
-    const token = process.env.REACT_APP_AUTH_TOKEN
+    const token = Cookies.get("access_token");
     if(token){
         config.headers.Authorization = `Bearer ${token}`
     }

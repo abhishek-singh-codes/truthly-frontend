@@ -6,9 +6,10 @@ import {
   fetchFeedByRange,
 } from "../../store/feedSlice";
 import useUserLocation from "../../hooks/useUserLocation";
+import Cookies from "js-cookie";
 
 const Distance = () => {
-  const token = process.env.REACT_APP_AUTH_TOKEN;
+  const token = Cookies.get("access_token");
   const IP = process.env.REACT_APP_BACKEND_IP;
 
   const dispatch = useDispatch();

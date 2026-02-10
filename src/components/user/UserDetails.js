@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 const UserDetails = () => {
   const IP = process.env.REACT_APP_BACKEND_IP;
-  const token = process.env.REACT_APP_AUTH_TOKEN;
-
+  const token = Cookies.get("access_token");
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
