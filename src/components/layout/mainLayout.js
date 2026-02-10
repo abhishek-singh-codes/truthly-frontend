@@ -3,10 +3,11 @@ import Navbar from "../navbar/Navbar";
 import Sidebar from "../sidebar/Sidebar";
 import Distance from "../DistanceRange/Distance";
 import UploadModal from "../uploadImage/UploadModal";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -38,7 +39,11 @@ const MainLayout = () => {
       </div>
 
       {/* MODAL AT TOP LEVEL */}
-      {open && <UploadModal onClose={() => setOpen(false)} />}
+      {open && <UploadModal onClose={() => {
+          setOpen(false)
+          navigate("/")
+        }}
+      />}
     </div>
   );
 };
