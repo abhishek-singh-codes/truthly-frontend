@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import { IoMdPerson } from "react-icons/io";
-import api from "../../utils/api";
+import api from "../../../utils/api";
+
 const Profile = () => {
     const [loading, setLoading] = useState(false);
     const [bio, setBio] = useState(null);
@@ -26,7 +27,6 @@ const Profile = () => {
         fetchData()
     }, []);
 
-    console.log()
     
     return (
         <div>
@@ -37,6 +37,7 @@ const Profile = () => {
                 </div>
                 <div>
                     {/* Bio */}
+                    <h3>{ bio }</h3>
                 </div>
                 <div>
                     {/* Freinds */}

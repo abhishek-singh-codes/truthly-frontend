@@ -6,7 +6,7 @@ import MainLayout from './components/layout/mainLayout';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Feed from './components/Feed/Feed';
-import Profile from './components/pages/profile'
+import Profile from './components/pages/profile/profile'
 
 // simple auth check
 const isAuthenticated = () => {
