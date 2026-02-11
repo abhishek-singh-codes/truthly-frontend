@@ -1,10 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
+import ProfileLayout from './components/layout/profileLayout';
 import MainLayout from './components/layout/mainLayout';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Feed from './components/Feed/Feed';
+import Profile from './components/pages/profile'
 
 // simple auth check
 const isAuthenticated = () => {
@@ -34,8 +36,21 @@ function App() {
           }
         >
           <Route path="/" element={<Feed />} />
-          <Route path="/post" element={<Feed />} />
+          {/* <Route path="/post" element={<Feed />} /> */}
         </Route>
+
+
+        <Route
+          element={
+            <ProtectedRoute>
+              <ProfileLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+
+        
 
         {/* DEFAULT REDIRECT */}
         <Route path="*" element={<Navigate to="/login" />} />
