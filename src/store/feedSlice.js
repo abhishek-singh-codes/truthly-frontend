@@ -1,35 +1,33 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from "../utils/api"
 
 /* ---------- NORMAL FEED ---------- */
 export const fetchFeed = createAsyncThunk(
   "feed/fetchFeed",
-  async ({ IP, token, cursor }) => {
-    const url = cursor
-      ? `${IP}/api/v1/feed?cursor=${cursor}`
-      : `${IP}/api/v1/feed`;
-
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    if (!res.ok) throw new Error("Feed API failed");
-    return res.json();
+  async ({ cursor }, { rejectWithValue }) => {
+    try {
+      const url = cursor ? `/feed?cursor=${cursor}` : `/feed`;
+      const res = await api.get(url);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Feed API failed");
+    }
   }
 );
 
 /* ---------- RANGE FEED ---------- */
 export const fetchFeedByRange = createAsyncThunk(
   "feed/fetchFeedByRange",
-  async ({ IP, token, radius, cursor, lat, long }) => {
-    let url = `${IP}/api/v1/feed/nearby?radius=${radius}&lat=${lat}&long=${long}`;
-    if (cursor) url += `&cursor=${cursor}`;
+  async ({ radius, cursor, lat, long }, { rejectWithValue }) => {
+    try {
+      let url = `/feed/nearby?radius=${radius}&lat=${lat}&long=${long}`;
+      if (cursor) url += `&cursor=${cursor}`;
 
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    if (!res.ok) throw new Error("Range API failed");
-    return res.json();
+      const res = await api.get(url);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Range API failed");
+    }
   }
 );
 

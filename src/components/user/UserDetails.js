@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import api from "../../utils/api"
 
 const UserDetails = () => {
   const IP = process.env.REACT_APP_BACKEND_IP;
@@ -8,13 +9,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const res = await fetch(`${IP}/api/v1/user`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      const res = await api.post("/user");
       const data = await res.json();
       setUserData(data?.resultObj);
     };
