@@ -35,7 +35,7 @@ const ProfileLayout = () => {
       {/* MODAL AT TOP LEVEL */}
       {open && <UploadModal onClose={() => {
           setOpen(false)
-          navigate("/")
+          navigate("/profile")
         }}
       />}
     </div>
