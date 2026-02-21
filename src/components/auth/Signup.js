@@ -35,7 +35,7 @@ const Signup = () => {
     const data = await res.json();
 
     if (res.ok) {
-      // redirect to home after signup
+      // redirect to login after signup
       navigate("/login");
     } else {
       setMessage(data?.error || "Signup failed");

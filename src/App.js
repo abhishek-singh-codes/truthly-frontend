@@ -36,7 +36,6 @@ function App() {
           }
         >
           <Route path="/" element={<Feed />} />
-          {/* <Route path="/post" element={<Feed />} /> */}
         </Route>
 
 
